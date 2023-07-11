@@ -2,7 +2,10 @@
 #define __APP_MAIN_H
 #include "main.h"
 #include "lcd1602.h"
+#include "mpu6050.h"
 #include "button.h"
+
+#define calc_len(array) sizeof(array)/sizeof(array[0])
 typedef enum {
     MAIN_MENU,
     ACCELX,
@@ -20,14 +23,20 @@ typedef enum {
 }MENUS;
 
 typedef struct {
-    MENUS name_menu;
-    uint8_t col;
-    uint8_t row;
-    char *str;
+    const char 	str[16];
+	char*		str_p;
+	uint8_t 	x;
+	uint8_t 	y;
+}string_t;
+
+typedef struct {
+    string_t *str;
+    uint8_t num_of_string;
     MENUS prev_menu;
     MENUS next_menu;
+    void (*func)(void);
 }menu_t;
 
-void menu_action(void);
+void menu_handle(void);
 
 #endif
