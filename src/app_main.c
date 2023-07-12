@@ -9,21 +9,18 @@ void app_main(void) {
     HAL_TIM_Base_Start(&htim1);
 
     lcd_init ();
-    lcd_put_cur(0, 4);
-    lcd_send_string("STM32");
     lcd_write_from_CGRAM(cc1, 0);
-    lcd_put_cur(1, 0);
+    lcd_put_cur(0, 0);
+    lcd_send_string("HELLO");
+    lcd_put_cur(5, 0);
     lcd_read_from_CGRAM(0);
-    HAL_Delay(250);
-    mpu_t *mpu = mpu6050_init();
+    HAL_Delay(1000);
+    mpu6050_init();
     lcd_clear();
     for(;;) {
-        // lcd_put_cur(0, 0);
-        // mpu_read_temp(mpu);
-        // sprintf(mpu_str, "temp: %+d", mpu->temp);
-        // lcd_clear();
-        // lcd_send_string(mpu_str);
-        // HAL_Delay(100);
+        menu_handle();
         btn_read_state();
+        HAL_Delay(250);
+        lcd_clear();
     }
 }

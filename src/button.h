@@ -1,6 +1,7 @@
 #ifndef __BUTTON_H
 #define __BUTTON_H
 #include "main.h"
+#include "menu.h"
 
 typedef enum {
     BTN1,
@@ -23,6 +24,6 @@ typedef struct {
     btn_state cur_state;
 }button_t;
 
-BTN btn_read_state(void);
+void btn_read_state(void);
 
 #endif

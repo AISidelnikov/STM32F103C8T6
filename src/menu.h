@@ -11,13 +11,12 @@ typedef enum {
     ACCELX,
     ACCELY,
     ACCELZ,
-
     GYROX,
     GYROY,
     GYROZ,
-
-    TEMP,
-
+    TEMPC,
+    TEMPK,
+    TEMPF,
     ALL_MENU,
     NO_MENU,
 }MENUS;
@@ -34,9 +33,12 @@ typedef struct {
     uint8_t num_of_string;
     MENUS prev_menu;
     MENUS next_menu;
+    MENUS prev_pos, cur_pos, next_pos;
     void (*func)(void);
 }menu_t;
 
+
 void menu_handle(void);
+void main_menu(void);
 
 #endif

@@ -2,6 +2,7 @@
 #define _MPU6050_H_
 #include "main.h"
 #include "string.h"
+#include "menu.h"
 
 #define MPU6050_ADDR 0xD0
 #define SMPLRT_DIV_REG 0x19
@@ -26,9 +27,21 @@ typedef struct {
     int temp;
 }mpu_t;
 
-mpu_t* mpu6050_init(void);
-void mpu_read_accel(mpu_t *mpu);
-void mpu_read_gyro(mpu_t *mpu);
-void mpu_read_temp(mpu_t *mpu);
+void mpu6050_init(void);
+void mpu_read_accel(void);
+void mpu_read_gyro(void);
+void mpu_read_temp(void);
+
+void mpu_str_accelx(void);
+void mpu_str_accely(void);
+void mpu_str_accelz(void);
+
+void mpu_str_gyrox(void);
+void mpu_str_gyroy(void);
+void mpu_str_gyroz(void);
+
+void mpu_str_tempc(void);
+void mpu_str_tempf(void);
+void mpu_str_tempk(void);
 
 #endif

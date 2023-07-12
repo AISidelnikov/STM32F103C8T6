@@ -5,6 +5,7 @@
 #include "lcd1602.h"
 #include "mpu6050.h"
 #include "button.h"
+#include "menu.h"
 
 void app_main(void);
 
