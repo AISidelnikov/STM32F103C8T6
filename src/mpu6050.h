@@ -44,4 +44,6 @@ void mpu_str_tempc(void);
 void mpu_str_tempf(void);
 void mpu_str_tempk(void);
 
+void mpu_read_all(int *arr);
+
 #endif

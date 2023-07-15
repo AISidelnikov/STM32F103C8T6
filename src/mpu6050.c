@@ -106,4 +106,19 @@ void mpu_str_tempk(void) {
     sprintf(string_func, "t = %+04d", (int)(mpu.temp + 273));
 }
 
+void mpu_read_all(int *arr) {
+    mpu_read_accel();
+    mpu_read_gyro();
+    mpu_read_temp();
+
+    arr[0] = mpu.accel_x;
+    arr[1] = mpu.accel_y;
+    arr[2] = mpu.accel_z;
+
+    arr[3] = mpu.gyro_x;
+    arr[4] = mpu.gyro_y;
+    arr[5] = mpu.gyro_z;
+
+    arr[6] = mpu.temp;
+}
 
