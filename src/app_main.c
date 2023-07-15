@@ -8,6 +8,7 @@ char cc1[] = {0x00, 0x00, 0x0A, 0x00, 0x11, 0x0E, 0x00, 0x00};
 char mpu_str[16] = {0};
 char rx_data = 0;
 int tx_data[7] = {0};
+char buff[55] = {0};
 
 void app_main(void) {
     HAL_TIM_Base_Start(&htim1);
@@ -24,9 +25,10 @@ void app_main(void) {
     for(;;) {
         menu_handle();
         btn_read_state();
-        // HAL_Delay(250);
+        mpu_read_all(tx_data);
+        HAL_UART_Transmit(&huart1, buff, sprintf(buff,"Ax=%d, Ay=%d, Az=%d, Gx=%d, Gy=%d, Gz=%d, t=%d \n", tx_data[0], tx_data[1], tx_data[2], tx_data[3], tx_data[4], tx_data[5], tx_data[6]), 1000);
+        HAL_Delay(250);
         lcd_clear();
-        HAL_UART_Transmit(&huart1, "Hello", 6, 1000);
     }
 }
 
