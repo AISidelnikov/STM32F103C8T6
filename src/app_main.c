@@ -26,16 +26,8 @@ void app_main(void) {
         menu_handle();
         btn_read_state();
         mpu_read_all(tx_data);
-        HAL_UART_Transmit(&huart1, buff, sprintf(buff,"Ax=%d, Ay=%d, Az=%d, Gx=%d, Gy=%d, Gz=%d, t=%d \n", tx_data[0], tx_data[1], tx_data[2], tx_data[3], tx_data[4], tx_data[5], tx_data[6]), 1000);
+        HAL_UART_Transmit(&huart1, buff, sprintf(buff,"Ax=%d, Ay=%d, Az=%d, Gx=%d, Gy=%d, Gz=%d, t=%d  \n", tx_data[0], tx_data[1], tx_data[2], tx_data[3], tx_data[4], tx_data[5], tx_data[6]), 1000);
         HAL_Delay(250);
         lcd_clear();
     }
 }
-
-// void HAL_SPI_RxCpltCallback(SPI_HandleTypeDef *hspi)
-// {
-//     HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
-//     mpu_read_all(tx_data);
-//     HAL_SPI_Transmit(&hspi2, &tx_data, sizeof(tx_data), 1000);
-//     HAL_SPI_Receive_IT(&hspi2, &rx_data, sizeof(rx_data));
-// }
